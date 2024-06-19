@@ -13,4 +13,8 @@ router.get('/privacy', (req, res) => {
     res.render('privacy');
 });
 
+router.get('/forbidden', (req, res) => {
+    res.render('forbidden');
+});
+
 module.exports = router;

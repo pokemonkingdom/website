@@ -17,7 +17,7 @@ app.use(session({
     secret: sessionSecret,
     cookie: {
         maxAge: 60000 * 60 * 24,
-        secure: false
+        secure: true
     },
     saveUninitialized: false,
     resave: false,
@@ -36,6 +36,9 @@ app.use((req, res, next) => {
     app.locals.user = req.user;
     next();
 })
+
+// Proxy settings
+app.set('trust proxy', 1);
 
 // Routes
 app.use('/', require('./routes/index.routes'));

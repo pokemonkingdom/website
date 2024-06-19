@@ -11,13 +11,11 @@
             
             <div>
                 <h1 class="h6">
-                    <% guild.name %> <span class="badge bg-primary"><%= guild.memberCount %></span> <span class="badge bg-success"><%= guild.onlineCount %></span><% if (guild.owner) { %><span class="badge bg-success">owner</span><% } %>
+                    <%= guild.name %> <% if (guild.owner) { %><span class="badge bg-success">owner</span><% } %>
                 </h1>
 
-                <p>
-                    <%= guild.id %>
-                </p>
-                <button class="btn btn-primary btn-sm" data-bs-toggle="collapse" data-bs-target="<%= 'collapse' + guild.id %>">Features</button>
+                <p><%= guild.id %></p>
+                <button class="btn btn-primary btn-sm" data-bs-toggle="collapse" data-bs-target="<%= '#collapse' + guild.id %>">Features</button>
             </div>
         </div>
 

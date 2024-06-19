@@ -1,15 +1,31 @@
-<%- include('partials/header') %>
+<body>
+    <%- include('partials/header') %>
+    <meta content="Dashboard - Pokémon Kingdom" property="og:title">
+    <meta content="#5865F2" data-react-helmet="true" name="theme-color">
+    <meta content="Pokémon Kingdom - Management Dashboard" property="og:description">
+    <title>Dashboard - Pokémon Kingdom</title>
 
-<main class="bg-dark">
-    <div class="containter text-light">
-        <h1>Dashboard</h1>
-
-        <p><%- user.username %>, these are your guilds</p>
-
-        <div class="row">
-            <% guilds.forEach((guild) => { %> <%- include('partials/guild', { guild }) -%> <% }) %>
+    <main class="bg-dark" style="display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 100vh;">
+        <div class="container text-light">
+            <!-- If the user is logged in, show the guilds. Else show the login button -->
+            <% if (user) { %>
+                <h1>Dashboard</h1>
+                <p><%- user.username %>, these are your guilds</p>
+                <div class="row">
+                    <% if (guilds && guilds.length> 0) { %>
+                        <% guilds.forEach((guild)=> { %>
+                            <%- include('partials/guild', { guild }) -%>
+                        <% }) %>
+                    <% } else { %>
+                        <p>You have no guilds.</p>
+                    <% } %>
+                </div>
+            <% } else { %>
+                <h1>Dashboard</h1>
+                <p>You need to login to view this page</p>
+                <a href="/auth/login" class="btn btn-primary">Login with Discord</a>
+            <% } %>
         </div>
-    </div>
-</main>
-
-<%- include('partials/footer') %>
+    </main>
+    <%- include('partials/footer') %>
+</body>
